@@ -1,4 +1,4 @@
-package com.example.hybrid.decrypt;
+package com.example.hybrid.decryptClientFirst;
 
 import javax.crypto.spec.SecretKeySpec;
 import java.io.File;
@@ -10,7 +10,7 @@ import java.security.spec.PKCS8EncodedKeySpec;
 
 public class StartDecryption {
 	
-	public PrivateKey getPrivate(String filename, String algorithm) throws Exception {
+	private PrivateKey getPrivate(String filename, String algorithm) throws Exception {
 		byte[] keyBytes = Files.readAllBytes(new File(filename).toPath());
 		PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyBytes);
 		KeyFactory kf = KeyFactory.getInstance(algorithm);
@@ -25,12 +25,12 @@ public class StartDecryption {
 	public static void main(String[] args) throws Exception{
 		StartDecryption startEnc = new StartDecryption();
 		
-		File encryptedKeyReceived = new File("EncryptedFiles/encryptedSecretKey");
-		File decryptedKeyFile = new File("DecryptedFiles/SecretKey");
-		new DecryptKey(startEnc.getPrivate("KeyPair/privateKey_Client2", "RSA"), encryptedKeyReceived, decryptedKeyFile, "RSA");
+		File encryptedKeyReceived = new File("EncryptedFiles/encryptedSecretKey2");
+		File decryptedKeyFile = new File("DecryptedFiles/SecretKey2");
+		new DecryptKey(startEnc.getPrivate("KeyPair/privateKey_Client1", "RSA"), encryptedKeyReceived, decryptedKeyFile, "RSA");
 		
-		File encryptedFileReceived = new File("EncryptedFiles/encryptedFile");
-		File decryptedFile = new File("DecryptedFiles/messageForTheSecondCustomer");
-		new DecryptData(encryptedFileReceived, decryptedFile, startEnc.getSecretKey("DecryptedFiles/SecretKey", "AES"), "AES");
+		File encryptedFileReceived = new File("EncryptedFiles/encryptedFile2");
+		File decryptedFile = new File("DecryptedFiles/messageForTheFirstCustomer");
+		new DecryptDataClient2(encryptedFileReceived, decryptedFile, startEnc.getSecretKey("DecryptedFiles/SecretKey2", "AES"), "AES");
 	}
 }

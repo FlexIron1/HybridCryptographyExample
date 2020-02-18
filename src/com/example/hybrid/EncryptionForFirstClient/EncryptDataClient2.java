@@ -1,8 +1,6 @@
-package com.example.hybrid.encryptClient2;
+package com.example.hybrid.EncryptionForFirstClient;
 
-import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,7 +29,7 @@ public class EncryptDataClient2 {
 	}
 
 	private void writeToFile(File output, byte[] toWrite)
-			throws IllegalBlockSizeException, BadPaddingException, IOException{
+			throws IOException{
 
 		output.getParentFile().mkdirs();
 		FileOutputStream fos = new FileOutputStream(output);

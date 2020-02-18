@@ -1,4 +1,4 @@
-package com.example.hybrid.encryptClient1;
+package com.example.hybrid.EncryptionForFirstClient;
 
 import javax.crypto.Cipher;
 import java.io.File;
@@ -8,11 +8,11 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.PublicKey;
 
-class EncryptKey {
+class EncryptKeyClient2 {
 
     private Cipher cipher;
 
-    EncryptKey(PublicKey key, File originalKeyFile, File encryptedKeyFile, String cipherAlgorithm) throws IOException,
+    EncryptKeyClient2(PublicKey key, File originalKeyFile, File encryptedKeyFile, String cipherAlgorithm) throws IOException,
             GeneralSecurityException {
         this.cipher = Cipher.getInstance(cipherAlgorithm);
         encryptFile(getFileInBytes(originalKeyFile), encryptedKeyFile, key);

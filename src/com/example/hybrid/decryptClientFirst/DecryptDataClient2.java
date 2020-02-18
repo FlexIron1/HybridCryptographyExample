@@ -1,4 +1,4 @@
-package com.example.hybrid.decrypt;
+package com.example.hybrid.decryptClientFirst;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -8,10 +8,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
-public class DecryptData {
+public class DecryptDataClient2 {
 	private Cipher cipher;
 
-	public DecryptData(File encryptedFileReceived, File decryptedFile, SecretKeySpec secretKey, String algorithm) throws IOException, GeneralSecurityException {
+	public DecryptDataClient2(File encryptedFileReceived, File decryptedFile, SecretKeySpec secretKey, String algorithm) throws IOException, GeneralSecurityException {
 		this.cipher = Cipher.getInstance(algorithm);
 		decryptFile(getFileInBytes(encryptedFileReceived), decryptedFile, secretKey);
 	}

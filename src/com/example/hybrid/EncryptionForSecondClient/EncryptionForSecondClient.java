@@ -1,4 +1,4 @@
-package com.example.hybrid.encryptClient1;
+package com.example.hybrid.EncryptionForSecondClient;
 
 import javax.crypto.spec.SecretKeySpec;
 import java.io.File;
@@ -9,7 +9,7 @@ import java.security.KeyFactory;
 import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
 
-public class StartEncryption {
+public class EncryptionForSecondClient {
 
 	public PublicKey getPublic(String filename, String algorithm) throws Exception {
 		byte[] keyBytes = Files.readAllBytes(new File(filename).toPath());
@@ -24,13 +24,13 @@ public class StartEncryption {
 	}
 	
 	public static void main(String[] args) throws IOException, GeneralSecurityException, Exception{
-		StartEncryption startEnc = new StartEncryption();
+		EncryptionForSecondClient startEnc = new EncryptionForSecondClient();
 		
 		File originalKeyFile = new File("OneKey/secretKey");
 		File encryptedKeyFile = new File("EncryptedFiles/encryptedSecretKey");
 		new EncryptKey(startEnc.getPublic("KeyPair/publicKey_Client2", "RSA"), originalKeyFile, encryptedKeyFile, "RSA");
 		
-		File originalFile = new File("word.txt");
+		File originalFile = new File("message for 2 client .txt");
 		File encryptedFile = new File("EncryptedFiles/encryptedFile");
 		new EncryptData(originalFile, encryptedFile, startEnc.getSecretKey("OneKey/secretKey", "AES"), "AES");
 	}

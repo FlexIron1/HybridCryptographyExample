@@ -1,4 +1,4 @@
-package com.example.hybrid.encryptClient1;
+package com.example.hybrid.EncryptionForSecondClient;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
